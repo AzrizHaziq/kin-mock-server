@@ -1,0 +1,32 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": "..",
+    "sourceMap": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": false,
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
+    "strict": true,
+    "useDefineForClassFields": false,
+    "target": "ES2022",
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "outDir": "dist",
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@bgenius-cm-frontend/*": [
+        "../bgenius-cm-frontend/src/*"
+      ]
+    },
+    "module": "ESNext",
+    "moduleResolution": "Node"
+  }
+}
