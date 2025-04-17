@@ -1,0 +1,153 @@
+<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" modified="2024-10-04T03:07:02.149Z" version="22.1.22" etag="pOrHxMVnwrJzT3Dn6ngR" type="embed">
+  <diagram name="Page-1" id="3s9CEf0Mo4irpOWD4-EK">
+    <mxGraphModel dx="2195" dy="799" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GHjkwsmusEGAI5zILpjE-40" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="640" width="560" height="287" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-39" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="160" width="560" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-38" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="343" width="560" height="287" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GHjkwsmusEGAI5zILpjE-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="510" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-6" value="&amp;nbsp;http (port 85)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GHjkwsmusEGAI5zILpjE-5" vertex="1" connectable="0">
+          <mxGeometry x="-0.0156" y="3" relative="1" as="geometry">
+            <mxPoint y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-1" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;FE" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="150" y="225" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-2" value="mock-server-interceptor.ts" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="200" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-3" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;strokeWidth=1;align=center;outlineConnect=0;dashed=0;outlineConnect=0;shape=mxgraph.aws3d.dataServer;strokeColor=#5E5E5E;aspect=fixed;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;locked=1;connectable=0;" parent="1" vertex="1">
+          <mxGeometry x="510" y="210" width="123" height="106" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-4" value="CD BE" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;movable=0;rotatable=0;deletable=0;editable=0;locked=1;connectable=0;" parent="1" vertex="1">
+          <mxGeometry x="541.5" y="230" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GHjkwsmusEGAI5zILpjE-9" target="GHjkwsmusEGAI5zILpjE-18" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="205" y="561" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-22" value="1. Will hit mock-server first(port 3000)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GHjkwsmusEGAI5zILpjE-21" vertex="1" connectable="0">
+          <mxGeometry x="0.1487" y="-4" relative="1" as="geometry">
+            <mxPoint x="-4" y="8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-9" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;FE" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="150" y="403" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-10" value="mock-server-interceptor.ts" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="378" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-11" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;strokeWidth=1;align=center;outlineConnect=0;dashed=0;outlineConnect=0;shape=mxgraph.aws3d.dataServer;strokeColor=#5E5E5E;aspect=fixed;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="530" y="380" width="123" height="106" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-12" value="CD BE" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="561.5" y="403" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-15" value="&lt;b&gt;NORMAL WAY&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="335" y="170" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-16" value="&lt;b&gt;WITH MOCK-SERVER&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="339" y="350" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-18" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;strokeWidth=1;align=center;outlineConnect=0;dashed=0;outlineConnect=0;shape=mxgraph.aws3d.dataServer;strokeColor=#5E5E5E;aspect=fixed;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="450" y="508" width="123" height="106" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-19" value="MOCK-SERVER" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="456.5" y="531" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.586;entryY=0.983;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="GHjkwsmusEGAI5zILpjE-9" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="450" y="546" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-24" value="2. if exist, then response the mocked" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GHjkwsmusEGAI5zILpjE-23" vertex="1" connectable="0">
+          <mxGeometry x="0.027" y="-4" relative="1" as="geometry">
+            <mxPoint x="35" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GHjkwsmusEGAI5zILpjE-28" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="723" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-37" value="3. Re-trigger back to real server" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GHjkwsmusEGAI5zILpjE-25" vertex="1" connectable="0">
+          <mxGeometry x="-0.0904" y="3" relative="1" as="geometry">
+            <mxPoint x="17" y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GHjkwsmusEGAI5zILpjE-28" target="GHjkwsmusEGAI5zILpjE-33" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="195" y="851" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-27" value="1. Will hit mock-server first(port 3000)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GHjkwsmusEGAI5zILpjE-26" vertex="1" connectable="0">
+          <mxGeometry x="0.1487" y="-4" relative="1" as="geometry">
+            <mxPoint x="-4" y="8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-28" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; FE" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="150" y="693" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-29" value="mock-server-interceptor.ts" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="230" y="668" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-30" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;strokeWidth=1;align=center;outlineConnect=0;dashed=0;outlineConnect=0;shape=mxgraph.aws3d.dataServer;strokeColor=#5E5E5E;aspect=fixed;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="670" width="123" height="106" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-31" value="CD BE" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="551.5" y="693" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-32" value="&lt;b&gt;WITH MOCK-SERVER (on error)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="304" y="640" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-33" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;strokeWidth=1;align=center;outlineConnect=0;dashed=0;outlineConnect=0;shape=mxgraph.aws3d.dataServer;strokeColor=#5E5E5E;aspect=fixed;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="798" width="123" height="106" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-34" value="MOCK-SERVER" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="446.5" y="821" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.586;entryY=0.983;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="GHjkwsmusEGAI5zILpjE-28" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="836" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="440" y="837" />
+              <mxPoint x="261" y="837" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GHjkwsmusEGAI5zILpjE-36" value="2. if not exist or not handled,&amp;nbsp;&lt;div&gt;then response error&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GHjkwsmusEGAI5zILpjE-35" vertex="1" connectable="0">
+          <mxGeometry x="0.027" y="-4" relative="1" as="geometry">
+            <mxPoint x="46" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3" value="Text" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Text" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="270" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Text" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="200" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
