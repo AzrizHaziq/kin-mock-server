@@ -5,9 +5,7 @@
     "scripts": {
         "start:mock": "tsx watch server.ts",
         "start:frontend": "cd ../bgenius-cm-frontend && npm run start:local-dev-bgenius-api",
-        "start": "concurrently -n mock,BGFE -c magenta,green \"npm run start:mock\" \"npm run start:frontend\"",
-        "start:frontend-interact": "cd ../bgenius-cm-frontend && npm run start:local-dev-interact",
-        "start-interact": "concurrently -n mock,BGFE -c magenta,green \"npm run start:mock\" \"npm run start:frontend-interact\""
+        "start": "concurrently -n mock,BGFE -c magenta,green \"npm run start:mock\" \"npm run start:frontend\""
     },
     "keywords": [],
     "author": "",

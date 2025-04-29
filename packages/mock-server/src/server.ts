@@ -1,17 +1,17 @@
-import express, {Request, Response, NextFunction} from "express";
+import express, { Request, Response, NextFunction } from "express";
 import bodyParser from 'body-parser'
-import {ApiDef, CONFIG, EndpointDefinition, generateHtml, MockFn} from "mocks/common";
+import { ApiDef, CONFIG, EndpointDefinition, generateHtml, MockFn } from "./common";
 import cors from "cors"
-import {endpoints} from "routes";
+import { endpoints } from "src/routes";
 
 const PORT: number = parseInt(process.env.PORT ?? '3000', 10);
 
 const app = express();
 app.disable('x-powered-by')
-app.use(bodyParser.urlencoded({extended: false})) // parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()) // parse application/json
 
-const corsConfig = {origin: true, credentials: true}
+const corsConfig = { origin: true, credentials: true }
 app.use(cors(corsConfig));
 app.options('*', cors(corsConfig));
 
@@ -45,7 +45,7 @@ app.get("/", (_: Request, response: Response) => {
 });
 
 // this is the magic
-;(function registerRoutes(apiDef: typeof endpoints): void {
+export function registerRoutes(apiDef: typeof endpoints): void {
   Object.entries(apiDef).forEach(([_, value]: [key: string, value: ApiDef | EndpointDefinition]) => {
     if ('urlPattern' in value) {
       const endpoint = value as EndpointDefinition;
@@ -65,10 +65,10 @@ app.get("/", (_: Request, response: Response) => {
           if (result instanceof Error) throw result;
 
           // add a delay to simulate loading placeholder
-            const delay = endpoint?.delay ?? 0;
-            if (delay > 0) {
-              await new Promise(resolve => setTimeout(resolve, delay));
-            }
+          const delay = endpoint?.delay ?? 0;
+          if (delay > 0) {
+            await new Promise(resolve => setTimeout(resolve, delay));
+          }
 
           res.json(result);
         } catch (e) {
@@ -81,7 +81,8 @@ app.get("/", (_: Request, response: Response) => {
       return;
     }
   })
-})(endpoints);
+};
+registerRoutes(endpoints);
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log("Server running at PORT: ", PORT);

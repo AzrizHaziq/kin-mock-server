@@ -1,0 +1,24 @@
+{
+  "name": "kinesso-mock-server-cli",
+  "version": "1.0.0",
+  "description": "CLI for initializing kinesso-mock-server projects",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "kinesso-mock-server": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsup src/cli.ts --format cjs --minify --clean",
+    "dev": "tsup src/cli.ts --format cjs --watch",
+    "start": "node dist/cli.js"
+  },
+  "dependencies": {
+    "commander": "^11.1.0",
+    "kinesso-mock-server": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3"
+  }
+}
