@@ -1,8 +1,8 @@
-import {Request, Response} from "express";
-import {kebabCase} from "lodash-es";
+import { Request, Response } from "express";
+import { kebabCase } from "lodash-es";
 
 export const CONFIG = {
-  mockFilePath: 'X--bgfe--mock--filepath' // Custom header to store the mock file path
+  mockFilePath: 'X--mock-server--filepath' // Custom header to store the mock file path
 }
 
 export type EndpointDefinition = {
@@ -10,14 +10,14 @@ export type EndpointDefinition = {
   method?: 'get' | 'post' | 'put' | 'delete' | 'patch', // default 'get'
   debugUrl: string, // for debugging mock-server
   mockFnPath: string, // path to the mock function
-  active: boolean, // default 200
+  disabled?: boolean,
   delay?: number, // delay in ms
 }
 
 export type MockFn<T, R> = (xReq: Request & T, xRes: Response) => R | Error | Promise<R | Error> // mocked response
 
 type RecursiveEndpoints<T = any> = Record<string, T | EndpointDefinition>
-export type ApiDef =  RecursiveEndpoints<RecursiveEndpoints>
+export type ApiDef = RecursiveEndpoints<RecursiveEndpoints>
 
 export function generateHtml(apiDef: ApiDef, basePath: string = ''): string {
   let html = '<ul>';

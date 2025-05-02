@@ -1,3 +1,4 @@
 packages:
-  - "packages/**"
+  - "packages/mock-server"
+  - "packages/cli"
   - "examples/**"

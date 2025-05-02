@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import bodyParser from 'body-parser'
-import { ApiDef, CONFIG, EndpointDefinition, generateHtml, MockFn } from "./common";
+import { ApiDef, CONFIG, EndpointDefinition, generateHtml, MockFn, delay } from "./common";
 import cors from "cors"
 import { endpoints } from "src/routes";
 
@@ -49,26 +49,20 @@ export function registerRoutes(apiDef: typeof endpoints): void {
   Object.entries(apiDef).forEach(([_, value]: [key: string, value: ApiDef | EndpointDefinition]) => {
     if ('urlPattern' in value) {
       const endpoint = value as EndpointDefinition;
+      if (endpoint?.disabled) return;
 
       app[endpoint.method ?? 'get'](endpoint.urlPattern, async (req: Request, res: Response) => {
-
-        if (endpoint?.active != undefined && !endpoint?.active) {
-          res.status(404).json({ error: 'Mock is disabled', errorCode: 'MOCK_IS_DISABLED' });
-          return;
-        }
         res.setHeader(CONFIG.mockFilePath, endpoint.mockFnPath);
+
+        if ((endpoint?.delay ?? 0) > 0) {
+          await delay(endpoint?.delay)
+        }
 
         try {
           const tsFile = await import(endpoint.mockFnPath) as { mockFn: MockFn<{}, {}> }
           const result = await tsFile?.mockFn?.(req, res) ?? Error(`MockPathError: ${endpoint.mockFnPath}: Mock should export const mockFn: MockFn<> = () => {}`);
 
           if (result instanceof Error) throw result;
-
-          // add a delay to simulate loading placeholder
-          const delay = endpoint?.delay ?? 0;
-          if (delay > 0) {
-            await new Promise(resolve => setTimeout(resolve, delay));
-          }
 
           res.json(result);
         } catch (e) {
