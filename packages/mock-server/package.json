@@ -14,9 +14,9 @@
     "dependencies": {
         "@faker-js/faker": "^9.0.0",
         "@types/lodash-es": "^4.17.12",
+        "cors": "^2.8.5",
         "express": "^4.19.2",
-        "lodash-es": "^4.17.21",
-        "cors": "^2.8.5"
+        "lodash-es": "^4.17.21"
     },
     "devDependencies": {
         "@types/cors": "^2.8.17",

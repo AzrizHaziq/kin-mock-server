@@ -1,36 +1,49 @@
 #!/usr/bin/env node
-import { Command } from 'commander';
+import inquirer from 'inquirer';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const program = new Command();
+async function main() {
+  const { _folderName } = await inquirer.prompt([
+    {
+      type: 'input',
+      name: '_folderName',
+      message: 'Enter folder name for mock server configuration:',
+      default: '.'
+    }
+  ]);
 
-program
-  .name('kinesso-mock-server')
-  .description('CLI for kinesso-mock-server initialization')
-  .version('1.0.0');
+  const folderName = slugify(_folderName);
+  const folderPath = path.join(process.cwd(), folderName);
+  const folderPathMockFn = path.join(folderPath, 'mock-fn');
 
-program
-  .command('init')
-  .description('Initialize a new mock server configuration')
-  .action(() => {
-    const routesContent = `import { createMockServer } from 'kinesso-mock-server';
+  if (fs.existsSync(folderPath)) {
+    console.error(`Folder ${folderName} already exists.`);
+    return;
+  }
 
-const routes = {
+  fs.mkdirSync(folderPath, { recursive: true });
+  fs.mkdirSync(folderPathMockFn, { recursive: true });
+
+  ////////////////////////////////////////////////
+  const routesContent = `import { createMockServer, type ApiDef, type EndpointDefinition } from 'kinesso-mock-server';
+
+const routes: ApiDef = {
   // Example route configuration
   example: {
     urlPattern: '/api/example',
-    method: 'get',
-    mockFnPath: './mocks/example.mock.ts',
+    mockFnPath: './mock-fn/example.mock.ts',
     delay: 200,
-    active: true
+    disabled: false
   }
 };
 
 export const mockServer = createMockServer(routes);
 `;
+  fs.writeFileSync(`${folderPath}/routes.ts`, routesContent);
 
-    const mockContent = `import { MockFn } from 'kinesso-mock-server';
+  ////////////////////////////////////////////////
+  const mockContent = `import { MockFn } from 'kinesso-mock-server';
 
 export const mockFn: MockFn = () => ({
   data: {
@@ -39,14 +52,24 @@ export const mockFn: MockFn = () => ({
 });
 `;
 
-    // Create directories
-    fs.mkdirSync('./mocks', { recursive: true });
+  fs.writeFileSync(`${folderPathMockFn}/example.mock.ts`, mockContent);
 
-    // Write files
-    fs.writeFileSync('./routes.ts', routesContent);
-    fs.writeFileSync('./mocks/example.mock.ts', mockContent);
+  console.log('Successfully initialized mock server configuration!');
+  console.log(`Update your package to run mock-server
+    "scripts": {
+      ...,
+      "mock:start": "tsx watch ${folderPath}/routes.ts"
+    }
+    `)
+};
 
-    console.log('Successfully initialized mock server configuration!');
-  });
+main();
 
-program.parse(process.argv);
+function slugify(str: string) {
+  str = str.replace(/^\s+|\s+$/g, ''); // trim leading/trailing white space
+  str = str.toLowerCase(); // convert string to lowercase
+  str = str.replace(/[^a-z0-9 -]/g, '') // remove any non-alphanumeric characters
+    .replace(/\s+/g, '-') // replace spaces with hyphens
+    .replace(/-+/g, '-'); // remove consecutive hyphens
+  return str
+}

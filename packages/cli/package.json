@@ -13,7 +13,7 @@
     "start": "node dist/cli.js"
   },
   "dependencies": {
-    "commander": "^11.1.0",
+    "inquirer": "^12.6.0",
     "kinesso-mock-server": "workspace:*"
   },
   "devDependencies": {

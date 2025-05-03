@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { kebabCase } from "lodash-es";
 
 export const CONFIG = {
+  PORT: 3000,
   mockFilePath: 'X--mock-server--filepath' // Custom header to store the mock file path
 }
 
