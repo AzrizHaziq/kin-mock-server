@@ -8,8 +8,8 @@
     "kinesso-mock-server": "dist/cli.js"
   },
   "scripts": {
-    "build": "tsup src/cli.ts --format cjs --minify --clean",
-    "dev": "tsup src/cli.ts --format cjs --watch",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "start": "node dist/cli.js"
   },
   "dependencies": {

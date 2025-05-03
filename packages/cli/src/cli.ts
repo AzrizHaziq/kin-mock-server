@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import inquirer from 'inquirer';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -38,14 +37,14 @@ const routes: ApiDef = {
   }
 };
 
-export const mockServer = createMockServer(routes);
-`;
+export const mockServer = createMockServer(routes).start({ port: 3000 });`;
+
   fs.writeFileSync(`${folderPath}/routes.ts`, routesContent);
 
   ////////////////////////////////////////////////
   const mockContent = `import { MockFn } from 'kinesso-mock-server';
 
-export const mockFn: MockFn = () => ({
+export const mockFn: MockFn<any, { data: { message: string }}> = () => ({
   data: {
     message: 'Hello from mock server!'
   }
@@ -58,7 +57,7 @@ export const mockFn: MockFn = () => ({
   console.log(`Update your package to run mock-server
     "scripts": {
       ...,
-      "mock:start": "tsx watch ${folderPath}/routes.ts"
+      "mock:start": "tsx watch ${folderName}/routes.ts"
     }
     `)
 };
