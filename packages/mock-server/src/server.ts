@@ -4,9 +4,7 @@ import { ApiDef, CONFIG, EndpointDefinition, generateHtml, MockFn, delay } from 
 import cors from "cors"
 import { endpoints } from "src/routes";
 
-const PORT: number = parseInt(process.env.PORT ?? '3000', 10);
-
-const app = express();
+const app: ReturnType<typeof express> = express();
 app.disable('x-powered-by')
 app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()) // parse application/json
@@ -78,9 +76,4 @@ export function registerRoutes(apiDef: typeof endpoints): void {
 };
 registerRoutes(endpoints);
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log("Server running at PORT: ", PORT);
-}).on("error", (error) => {
-  // gracefully handle error
-  throw new Error(error.message);
-});
+export { app }

@@ -1,11 +1,11 @@
 {
     "name": "kinesso-mock-server",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "scripts": {
-        "start:mock": "tsx watch server.ts",
-        "start:frontend": "cd ../bgenius-cm-frontend && npm run start:local-dev-bgenius-api",
-        "start": "concurrently -n mock,BGFE -c magenta,green \"npm run start:mock\" \"npm run start:frontend\""
+        "build": "tsup",
+        "dev": "tsup --watch"
     },
     "keywords": [],
     "author": "",
@@ -22,7 +22,15 @@
         "@types/cors": "^2.8.17",
         "@types/express": "^4.17.21",
         "concurrently": "^9.0.0",
+        "tsup": "^8.0.2",
         "tsx": "^4.19.0",
         "typescript": "^5.5.4"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        }
     }
 }

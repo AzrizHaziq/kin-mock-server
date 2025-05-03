@@ -6,7 +6,7 @@ export const endpoints: ApiDef = {
     mockFnPath: 'mocks/main/health.ts',
     debugUrl: 'http://localhost:3000/api/health',
   },
-  client: {
+  'hello-world': {
     urlPattern: `hello`,
     mockFnPath: "mocks/main/client.ts",
     debugUrl: 'http://localhost:3000/',
