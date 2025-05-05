@@ -23,11 +23,7 @@
     "types": [
       "node"
     ],
-    "paths": {
-      "@bgenius-cm-frontend/*": [
-        "../bgenius-cm-frontend/src/*"
-      ]
-    },
+    "paths": {},
     "module": "ESNext",
     "moduleResolution": "Node"
   }
