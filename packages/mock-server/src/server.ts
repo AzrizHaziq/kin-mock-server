@@ -27,27 +27,23 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 // this is for http://localhost:3000
-// app.get("/", (_: Request, response: Response) => {
-//   const html = generateHtml(endpoints);
+export const registerIndexRoute = (endpoints: ApiDef) => {
+  app.get("/", (_: Request, response: Response) => {
+    const html = generateHtml(endpoints);
 
-//   response.status(200).send(`
-//     <h1>Mock Server Documentation</h1>
-//     <p>This is the mock server. Please help create any missing routes.</p>
-//     ${html}
-//     <div style="display: flex; gap: 2px; align-items: center">
-//       <p>More info here:</p>
-//       <a href="https://kinesso.atlassian.net/browse/BGENIUS-14357">BGENIUS-14357</a>
-//       <a href="https://kinesso.atlassian.net/browse/BGENIUS-14791">BGENIUS-14791</a>
-//     </div>
-//   `);
-// });
+    response.status(200).send(`
+      <h1>Mock Server Documentation</h1>
+      <p>This is the mock server. Please help create any missing routes.</p>
+      ${html}
+    `);
+  });
+}
 
 // this is the magic
 export function registerRoutes(apiDef: ApiDef, basePath: string): void {
   Object.entries(apiDef).forEach(([_, value]: [key: string, value: ApiDef | EndpointDefinition]) => {
     if ('urlPattern' in value) {
       const endpoint = value as EndpointDefinition;
-      console.log('endpoint', endpoint, endpoint.mockFnPath);
 
       if (endpoint?.disabled) return;
 

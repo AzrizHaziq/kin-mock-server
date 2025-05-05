@@ -18,6 +18,7 @@
         "lodash-es": "^4.17.21"
     },
     "devDependencies": {
+        "@types/node": "^20.17.32",
         "@types/lodash-es": "^4.17.12",
         "@types/cors": "^2.8.17",
         "@types/express": "^4.17.21",

@@ -26,10 +26,16 @@ export function generateHtml(apiDef: ApiDef, basePath: string = ''): string {
   for (const key in apiDef) {
     if ('urlPattern' in apiDef[key]) {
       const endpoint = apiDef[key] as EndpointDefinition;
+      const disabledStyle = endpoint.disabled ? 'opacity: 0.5; cursor:not-allowed' : '';
+
+      // debugUrl need to be parse and genereate 
+      endpoint.debugUrl = `${basePath}${endpoint.urlPattern}`
+      const normalizedUrl = endpoint.debugUrl.replace(/\/\//g, "/");;
+
       html += `
-        <li>
+        <li style='${disabledStyle}'>
           <span style="text-transform: uppercase">${endpoint.method ?? 'get'} </span> 
-          <a href="${endpoint.debugUrl}">${kebabCase(key)}</a>
+          <a href="${normalizedUrl}">${kebabCase(key)}</a>
         </li>
       `;
     } else {

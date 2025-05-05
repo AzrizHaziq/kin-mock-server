@@ -1,5 +1,5 @@
 import { type ApiDef, delay, CONFIG } from './src/common';
-import { registerRoutes, app } from './src/server';
+import { registerRoutes, app, registerIndexRoute } from './src/server';
 import path from 'node:path';
 
 // basePath should be the directory containing the routes file
@@ -12,6 +12,7 @@ function createMockServer(routes: ApiDef, basePath = __dirname) {
 
   return {
     start: ({ port = CONFIG.PORT, host = 'localhost' }: { port?: number, host?: string }) => {
+      registerIndexRoute(routes)
       // Register routes before starting the server, passing the resolved base path
       registerRoutes(routes, resolvedBasePath);
 
