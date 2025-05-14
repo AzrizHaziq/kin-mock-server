@@ -37,7 +37,7 @@ const routes: ApiDef = {
   }
 };
 
-export const mockServer = createMockServer(routes).start({ port: 3000 });`;
+export const mockServer = createMockServer(routes, __dirname).start({ port: 3000 });`;
 
   fs.writeFileSync(`${folderPath}/routes.ts`, routesContent);
 
