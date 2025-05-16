@@ -13,7 +13,9 @@
     "strict": true,
     "useDefineForClassFields": false,
     "target": "ES2022",
-    "lib": ["esnext", "dom"],
+    "lib": [
+      "esnext"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -21,11 +23,7 @@
     "types": [
       "node"
     ],
-    "paths": {
-      "@bgenius-cm-frontend/*": [
-        "../bgenius-cm-frontend/src/*"
-      ]
-    },
+    "paths": {},
     "module": "ESNext",
     "moduleResolution": "Node"
   }

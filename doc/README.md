@@ -1,11 +1,10 @@
 
 # Mock Server
-https://kinesso.atlassian.net/browse/BGENIUS-14357
-https://kinesso.atlassian.net/browse/BGENIUS-14791
+## NOT UPDATED YET
 
 - cd mock-server
 - **_npm install_**
-- **_npm start_** to use bGenius authentication  
+- **_npm start_** to use authentication  
   &nbsp;&nbsp;&nbsp;or  
   **_npm start-interact_** to use Interact Authentication
   - (both concurrently run FE CD and mock-server)
