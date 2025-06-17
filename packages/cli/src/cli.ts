@@ -67,6 +67,7 @@ async function initializeProject(folderName: string) {
     version: "1.0.0",
     description: "Mock server project",
     main: "routes.ts",
+    type: "module",
     scripts: {
       "start": `tsx watch routes.ts`
     },
@@ -86,6 +87,10 @@ async function initializeProject(folderName: string) {
 
   ////////////////////////////////////////////////
   const routesContent = `import { createMockServer, type ApiDef, type EndpointDefinition } from 'kinesso-mock-server';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const routes: ApiDef = {
   // Example route configuration
@@ -99,7 +104,7 @@ const routes: ApiDef = {
 
 export const mockServer = createMockServer(routes, __dirname).start({ port: 3000 });`;
 
-  fs.writeFileSync(`${folderPath}/routes.ts`, routesContent);
+  fs.writeFileSync(path.join(folderPath, 'routes.ts'), routesContent);
 
   ////////////////////////////////////////////////
   const mockContent = `import { MockFn } from 'kinesso-mock-server';
@@ -108,17 +113,40 @@ export const mockFn: MockFn<any, { data: { message: string }}> = () => ({
   data: {
     message: 'Hello from mock server!'
   }
-});
-`;
+});`;
 
-  fs.writeFileSync(`${folderPathMockFn}/example.mock.ts`, mockContent);
+  fs.writeFileSync(path.join(folderPathMockFn, 'example.mock.ts'), mockContent);
+
+  // Create tsconfig.json
+  const tsconfigContent = {
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+};
+
+  fs.writeFileSync(
+    path.join(folderPath, 'tsconfig.json'),
+    JSON.stringify(tsconfigContent, null, 2)
+  );
 
   console.log('Successfully initialized mock server configuration!');
   console.log(`
 Next steps:
 1. cd ${finalFolderName}
 2. npm install
-3. npm run mock:start
+3. npm start
   `);
 }
 
