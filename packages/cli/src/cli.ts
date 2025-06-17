@@ -1,28 +1,88 @@
+#!/usr/bin/env node
+
 import inquirer from 'inquirer';
 import fs from 'node:fs';
 import path from 'node:path';
 
+const command = process.argv[2];
+
+if (!command || command === '--help' || command === '-h') {
+  console.log(`
+Usage: kinesso-mock-server-cli <command>
+
+Commands:
+  init [folder-name]    Initialize a new mock server project
+  help                  Show this help message
+
+Examples:
+  kinesso-mock-server-cli init
+  kinesso-mock-server-cli init my-mock-server
+  `);
+  process.exit(0);
+}
+
 async function main() {
+  if (command === 'init') {
+    const folderName = process.argv[3] || '.';
+    await initializeProject(folderName);
+  } else {
+    console.error(`Unknown command: ${command}`);
+    console.log('Run kinesso-mock-server-cli --help for usage information');
+    process.exit(1);
+  }
+}
+
+async function initializeProject(folderName: string) {
   const { _folderName } = await inquirer.prompt([
     {
       type: 'input',
       name: '_folderName',
       message: 'Enter folder name for mock server configuration:',
-      default: '.'
+      default: folderName
     }
   ]);
 
-  const folderName = slugify(_folderName);
-  const folderPath = path.join(process.cwd(), folderName);
+  const finalFolderName = slugify(_folderName);
+  const folderPath = path.join(process.cwd(), finalFolderName);
   const folderPathMockFn = path.join(folderPath, 'mock-fn');
 
   if (fs.existsSync(folderPath)) {
-    console.error(`Folder ${folderName} already exists.`);
+    console.error(`Folder ${finalFolderName} already exists.`);
     return;
   }
 
   fs.mkdirSync(folderPath, { recursive: true });
   fs.mkdirSync(folderPathMockFn, { recursive: true });
+
+  // Read mock-server version
+  const mockServerPackageJson = JSON.parse(
+    fs.readFileSync(
+      path.join(__dirname, '../../mock-server/package.json'),
+      'utf-8'
+    )
+  );
+
+  const packageJson = {
+    name: finalFolderName,
+    version: "1.0.0",
+    description: "Mock server project",
+    main: "routes.ts",
+    scripts: {
+      "start": `tsx watch routes.ts`
+    },
+    dependencies: {
+      "kinesso-mock-server": `^${mockServerPackageJson.version}`
+    },
+    devDependencies: {
+      "tsx": "^4.19.0",
+      "typescript": "^5.5.4"
+    }
+  };
+
+  fs.writeFileSync(
+    path.join(folderPath, 'package.json'),
+    JSON.stringify(packageJson, null, 2)
+  );
 
   ////////////////////////////////////////////////
   const routesContent = `import { createMockServer, type ApiDef, type EndpointDefinition } from 'kinesso-mock-server';
@@ -54,13 +114,13 @@ export const mockFn: MockFn<any, { data: { message: string }}> = () => ({
   fs.writeFileSync(`${folderPathMockFn}/example.mock.ts`, mockContent);
 
   console.log('Successfully initialized mock server configuration!');
-  console.log(`Update your package to run mock-server
-    "scripts": {
-      ...,
-      "mock:start": "tsx watch ${folderName}/routes.ts"
-    }
-    `)
-};
+  console.log(`
+Next steps:
+1. cd ${finalFolderName}
+2. npm install
+3. npm run mock:start
+  `);
+}
 
 main();
 
